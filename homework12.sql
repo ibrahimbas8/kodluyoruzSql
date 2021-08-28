@@ -31,3 +31,9 @@ AND replacement_cost >
 )
 
 4- payment tablosunda en fazla sayıda alışveriş yapan müşterileri(customer) sıralayınız.
+SELECT COUNT(amount), customer.first_name, customer.last_name
+FROM payment
+INNER JOIN customer ON customer.customer_id = payment.customer_id
+GROUP BY payment.customer_id, customer.first_name, customer.last_name
+ORDER BY COUNT(amount) DESC
+LIMIT 1;
